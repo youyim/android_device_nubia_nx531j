@@ -120,6 +120,3 @@ service sbinqseecomd /sbin/qseecomd
 
 on property:ro.crypto.state=encrypted
     start sbinqseecomd
-
-on property:init.svc.recovery=running
-trigger enable-low-power
