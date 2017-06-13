@@ -48,6 +48,8 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
+TW_INCLUDE_CRYPTO := ture
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff buildvariant=user
@@ -76,7 +78,6 @@ TARGET_RECOVERY_FSTAB := device/nubia/nx531j/recovery/etc/twrp.fstab
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_THEME := portrait_hdpi
 TARGET_RECOVERY_QCOM_RTC_FIX := true
-TW_INCLUDE_CRYPTO := ture
 TW_NO_SCREEN_BLANK
 TW_NO_SCREEN_TIMEOUT := true
 ARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
