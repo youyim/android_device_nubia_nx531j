@@ -86,6 +86,7 @@ RECOVERY_SDCARD_ON_DATA := true
 BOARD_HAS_NO_REAL_SDCARD := true
 BOARD_FIX_NUBIA_OTA := true
 TW_IGNORE_MISC_WIPE_DATA := true
+TW_EXCLUDE_DEFAULT_USB_INIT := true
 
 #remove screen pointer
 TW_INPUT_BLACKLIST := "hbtp_vm"
