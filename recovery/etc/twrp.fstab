@@ -1,6 +1,6 @@
 /cache          ext4        /dev/block/bootdevice/by-name/cache            flags=display="缓存分区(cache)"
 /system         ext4        /dev/block/bootdevice/by-name/system           flags=display="系统分区(system)"
-/data           ext4        /dev/block/bootdevice/by-name/userdata         flags=encryptable=footer;length=-16384
+/data           ext4        /dev/block/bootdevice/by-name/userdata         length=-16384
 /boot           emmc        /dev/block/bootdevice/by-name/boot             flags=display="内核分区(boot)"
 /recovery       emmc        /dev/block/bootdevice/by-name/recovery         flags=display="REC分区(recovery)";backup=1
 /persist        ext4        /dev/block/bootdevice/by-name/persist
@@ -24,5 +24,5 @@
 /splash         emmc        /dev/block/bootdevice/by-name/splash           flags=backup=1;subpartitionof=/aboot
 /recovery2      emmc        /dev/block/bootdevice/by-name/recovery2        flags=backup=1;subpartitionof=/aboot
 
-/external_sd    vfat        /dev/block/mmcblk1p1 /dev/block/mmcblk1        flags=fsflags=utf8;display="外置SD卡(external_sd)";storage;wipeingui;removable;encryptable=footer
+/external_sd    vfat        /dev/block/mmcblk1p1 /dev/block/mmcblk1        flags=fsflags=utf8;display="外置SD卡(external_sd)";storage;wipeingui;removable
 /usbdisk        vfat        /dev/block/sda1 /dev/block/sda                 flags=fsflags=utf8;display="OTG-U盘(usbdisk)";storage;removable
