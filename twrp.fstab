@@ -1,0 +1,28 @@
+/cache          ext4        /dev/block/bootdevice/by-name/cache            flags=display="缓存分区(cache)"
+/system         ext4        /dev/block/bootdevice/by-name/system           flags=display="系统分区(system)"
+/data           ext4        /dev/block/bootdevice/by-name/userdata         length=-16384
+/boot           emmc        /dev/block/bootdevice/by-name/boot             flags=display="内核分区(boot)"
+/recovery       emmc        /dev/block/bootdevice/by-name/recovery         flags=display="REC分区(recovery)";backup=1
+/persist        ext4        /dev/block/bootdevice/by-name/persist
+/misc           emmc        /dev/block/bootdevice/by-name/misc
+/system_image   emmc        /dev/block/bootdevice/by-name/system
+
+/aboot          emmc        /dev/block/bootdevice/by-name/aboot            flags=backup=1;display="firmware(底层固件)"
+/rpm            emmc        /dev/block/bootdevice/by-name/rpm              flags=backup=1;subpartitionof=/aboot
+/tz             emmc        /dev/block/bootdevice/by-name/tz               flags=backup=1;subpartitionof=/aboot
+/cmnlib         emmc        /dev/block/bootdevice/by-name/cmnlib           flags=backup=1;subpartitionof=/aboot
+/xbl            emmc        /dev/block/bootdevice/by-name/xbl              flags=backup=1;subpartitionof=/aboot
+/hyp            emmc        /dev/block/bootdevice/by-name/hyp              flags=backup=1;subpartitionof=/aboot
+/bluetooth      emmc        /dev/block/bootdevice/by-name/bluetooth        flags=backup=1;subpartitionof=/aboot
+/pmic           emmc        /dev/block/bootdevice/by-name/pmic             flags=backup=1;subpartitionof=/aboot
+/modem          emmc        /dev/block/bootdevice/by-name/modem            flags=backup=1;subpartitionof=/aboot
+/cmnlib64       emmc        /dev/block/bootdevice/by-name/cmnlib64         flags=backup=1;subpartitionof=/aboot
+/dsp            emmc        /dev/block/bootdevice/by-name/dsp              flags=backup=1;subpartitionof=/aboot
+/keymaster      emmc        /dev/block/bootdevice/by-name/keymaster        flags=backup=1;subpartitionof=/aboot
+/devcfg         emmc        /dev/block/bootdevice/by-name/devcfg           flags=backup=1;subpartitionof=/aboot
+
+/splash         emmc        /dev/block/bootdevice/by-name/splash           flags=backup=1;subpartitionof=/aboot
+/recovery2      emmc        /dev/block/bootdevice/by-name/recovery2        flags=backup=1;subpartitionof=/aboot
+
+/external_sd    vfat        /dev/block/mmcblk1p1 /dev/block/mmcblk1        flags=fsflags=utf8;display="外置SD卡(external_sd)";storage;wipeingui;removable
+/usbdisk        vfat        /dev/block/sda1 /dev/block/sda                 flags=fsflags=utf8;display="OTG-U盘(usbdisk)";storage;removable
