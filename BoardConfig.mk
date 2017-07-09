@@ -20,12 +20,12 @@
 # included in a build is to use PRODUCT_PACKAGES in a product
 # definition file).
 #
+LOCAL_PATH := device/nubia/nx531j
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := NX531J
 
 # Bootloader
-BOARD_VENDOR := nubia
 TARGET_BOOTLOADER_NAME := msm8996
 TARGET_BOOTLOADER_BOARD_NAME := MSM8996
 TARGET_NO_BOOTLOADER := true
@@ -54,13 +54,13 @@ TARGET_HW_DISK_ENCRYPTION := true
 #TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff buildvariant=user
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 4096
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
-TARGET_PREBUILT_KERNEL := device/nubia/nx531j/kernel
-BOARD_CUSTOM_BOOTIMG_MK := device/nubia/nx531j/mkbootimg.mk
+BOARD_KERNEL_TAGS_OFFSET := 0x00000100
+BOARD_RAMDISK_OFFSET     := 0x01000000
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -76,17 +76,18 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := false
 
 #Recovery
-TARGET_RECOVERY_FSTAB := device/nubia/nx531j/twrp.fstab
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/twrp.fstab
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_THEME := portrait_hdpi
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_NO_SCREEN_TIMEOUT := true
 ARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
 RECOVERY_SDCARD_ON_DATA := true
 BOARD_HAS_NO_REAL_SDCARD := true
 BOARD_FIX_NUBIA_OTA := true
+TW_INCLUDE_NTFS_3G := true
 TW_SKIP_SYSTEM_RO_PAGE := true
+TW_IGNORE_MISC_WIPE_DATA := true
 
 #remove screen pointer
 TW_INPUT_BLACKLIST := "hbtp_vm"
@@ -94,3 +95,6 @@ TW_INPUT_BLACKLIST := "hbtp_vm"
 #add chinese language
 TW_EXTRA_LANGUAGES := true
 TW_DEFAULT_LANGUAGE := zh_CN
+
+# Abuse unified device and system.prop to match props for OTA compatibility
+TARGET_UNIFIED_DEVICE := true

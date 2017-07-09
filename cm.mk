@@ -43,9 +43,3 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=nubia/NX531J/NX531J:7.1.1/NMF26F/nubia03220919:user/release-keys \
     PRIVATE_BUILD_DESC="NX531J-user 7.1.1 NMF26F eng.nubia.20170322.091929 release-keys"
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/RecoverySignature/boot.sh:boot.sh \
-    $(LOCAL_PATH)/RecoverySignature/BootSignature.jar:BootSignature.jar \
-    $(LOCAL_PATH)/RecoverySignature/verity.pk8:verity.pk8 \
-    $(LOCAL_PATH)/RecoverySignature/verity.x509.pem:verity.x509.pem \
-    $(LOCAL_PATH)/RecoverySignature/verity_key:verity_key \
