@@ -88,6 +88,7 @@ BOARD_FIX_NUBIA_OTA := true
 TW_INCLUDE_NTFS_3G := true
 TW_SKIP_SYSTEM_RO_PAGE := true
 TW_IGNORE_MISC_WIPE_DATA := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/soc/6a00000.ssusb/6a00000.dwc3/gadget/lun0/file"
 
 #remove screen pointer
 TW_INPUT_BLACKLIST := "hbtp_vm"
