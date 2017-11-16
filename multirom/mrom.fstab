@@ -1,0 +1,9 @@
+/boot       emmc        /dev/block/mmcblk0p14
+/recovery   emmc        /dev/block/mmcblk0p15
+/system     ext4        /dev/block/mmcblk0p17
+/data       ext4        /dev/block/mmcblk0p47
+/cache      ext4        /dev/block/mmcblk0p40
+/persist    ext4        /dev/block/mmcblk0p41
+
+/external_sd  auto          /dev/block/mmcblk1p1  /dev/block/mmcblk1     flags=display="MicroSD Card";storage;wipeingui;removable
+/usb_otg      auto          /dev/block/sda1  /dev/block/sda              flags=display="USB-OTG";storage;wipeingui;removable

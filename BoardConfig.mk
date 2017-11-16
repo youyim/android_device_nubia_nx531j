@@ -1,5 +1,4 @@
 # Copyright (C) 2016 The CyanogenMod Project
-# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -20,6 +19,7 @@
 # included in a build is to use PRODUCT_PACKAGES in a product
 # definition file).
 #
+
 LOCAL_PATH := device/nubia/nx531j
 
 # Assert
@@ -47,12 +47,6 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a53
 
-
-# Crypto
-TARGET_HW_DISK_ENCRYPTION := true
-#TW_INCLUDE_CRYPTO := ture
-#TARGET_KEYMASTER_WAIT_FOR_QSEE := true
-
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff buildvariant=user
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
@@ -70,13 +64,21 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 57396661248
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
 
-# Filesystem
+
+# Releasetools
+TARGET_RELEASETOOLS_EXTENSIONS := device/qcom/common
+
+# Crypto
+TARGET_HW_DISK_ENCRYPTION := true
+#TW_HAS_DOWNLOAD_MODE := true
+#TW_INCLUDE_CRYPTO := true
+#TW_CRYPTO_USE_SYSTEM_VOLD := qseecomd
+
+# Recovery
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/twrp.fstab
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := false
-
-#Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/twrp.fstab
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_THEME := portrait_hdpi
 TARGET_RECOVERY_QCOM_RTC_FIX := true
@@ -86,7 +88,6 @@ RECOVERY_SDCARD_ON_DATA := true
 BOARD_HAS_NO_REAL_SDCARD := true
 BOARD_FIX_NUBIA_OTA := true
 TW_INCLUDE_NTFS_3G := true
-TW_IGNORE_MISC_WIPE_DATA := true
 
 #remove screen pointer
 TW_INPUT_BLACKLIST := "hbtp_vm"
@@ -95,5 +96,23 @@ TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_EXTRA_LANGUAGES := true
 TW_DEFAULT_LANGUAGE := zh_CN
 
-# Abuse unified device and system.prop to match props for OTA compatibility
-TARGET_UNIFIED_DEVICE := true
+#MultiROM config. MultiROM also uses parts of TWRP config
+MR_INPUT_TYPE := type_b
+MR_DEV_BLOCK_BOOTDEVICE := true
+MR_INIT_DEVICES := $(LOCAL_PATH)/multirom/mr_init_devices.c
+MR_DPI := xhdpi
+MR_DPI_FONT := 340
+DEVICE_RESOLUTION := 1080x1920
+MR_PIXEL_FORMAT := "RGBA_8888"
+MR_FSTAB := $(LOCAL_PATH)/multirom/mrom.fstab
+MR_KEXEC_MEM_MIN := 0x85000000
+MR_USE_MROM_FSTAB := true
+MR_NO_KEXEC := enabled
+TARGET_RECOVERY_IS_MULTIROM := true
+MR_DEVICE_VARIANTS := NX531J
+
+# Versioning
+MR_DEVICE_SPECIFIC_VERSION := e
+include $(LOCAL_PATH)/multirom/MR_REC_VERSION.mk
+BOARD_MKBOOTIMG_ARGS += --board mrom$(MR_REC_VERSION)
+MR_REC_VERSION := $(shell date -u +%Y%m%d)-01
