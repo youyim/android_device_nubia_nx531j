@@ -1,7 +1,9 @@
-android_device_nubia_nx531j-twrp
+## How-to compile it:
 
-直接运行build-recovery.sh编译recovery并签名
+To build:
 
-Usage:
-
-source build-recovery.sh
+```sh
+. build/envsetup.sh
+lunch omni_nx563j-eng
+make recoveryimage
+```
