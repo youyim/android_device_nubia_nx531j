@@ -84,6 +84,7 @@ BOARD_HAS_NO_REAL_SDCARD := true
 #BOARD_FIX_NUBIA_OTA := true
 TW_INCLUDE_NTFS_3G := true
 TW_NO_USB_STORAGE := true
+BOARD_CUSTOM_BOOTIMG_MK := device/nubia/nx563j/mkbootimg.mk
 
 #remove screen pointer
 TW_INPUT_BLACKLIST := "hbtp_vm"
